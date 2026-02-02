@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      z-index: 2;
+      animation: popIn 1s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff4d6d;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 22px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background-color: #ddd;
+      color: #333;
+      position: absolute;
+    }
+
+    .heart, .confetti {
+      position: absolute;
+      animation: float 4s linear forwards;
+    }
+
+    .heart {
+      color: red;
+      font-size: 20px;
+    }
+
+    .confetti {
+      width: 8px;
+      height: 8px;
+      background-color: random;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-700px) rotate(720deg);
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .love {
+      font-size: 24px;
+      color: #ff4d6d;
+      margin-top: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>💌 Julia 💌</h1>
+  <p>
+    Good evening beautiful. We’ve spent Christmas and New Years apart.
+    That doesn’t matter, we have more to come. That said, I really want
+    to spend this Valentine’s with you my love.
+    <br><br>
+    So… would you be my Valentine? :)
+  </p>
+
+  <div class="buttons">
+    <button class="yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()">No 🙃</button>
+  </div>
+
+  <div class="love hidden" id="loveText">
+    I love you ❤️ Happy Valentine’s Day 💕
+  </div>
+</div>
+
+<script>
+  const music = document.getElementById("music");
+  const loveText = document.getElementById("loveText");
+  const noBtn = document.getElementById("noBtn");
+
+  function yesClicked() {
+    music.play();
+    loveText.classList.remove("hidden");
+
+    for (let i = 0; i < 80; i++) {
+      createHeart();
+      createConfetti();
+    }
+  }
+
+  function moveNo() {
+    const x = Math.random() * 250 - 125;
+    const y = Math.random() * 120 - 60;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+
+  function createConfetti() {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.bottom = "-20px";
+    confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 70%)`;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 4000);
+  }
+</script>
+
+</body>
+</html>
