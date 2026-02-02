@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>💌 Julia 💌</h1>
+
+  <p>
+    Good evening beautiful. We’ve spent Christmas and New Years apart.
+    That doesn’t matter, we have more to come. That said, I really want
+    to spend this Valentine’s with you my love.
+    <br><br>
+    So… would you be my Valentine? :)
+  </p>
+
+  <div class="buttons">
+    <button class="yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()">No 🙃</button>
+  </div>
+
+  <div class="love hidden" id="loveText">
+    I love you ❤️ Happy Valentine’s Day 💕
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
